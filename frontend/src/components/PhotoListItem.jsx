@@ -1,16 +1,8 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
 
-const photos = [...Array(3)];
-const sampleArrayOfPhotos = photos.map((photo, i) => 
-  <PhotoListItem key={i} photo={sampleDataForPhotoListItem} />
-);
-
 function PhotoListItem({ photo }) {
   return (
-    <div className="App">
-    {sampleArrayOfPhotos}
- 
     <div className="photo-list__item">
       <div className="photo-list__item-content">
         <img className="photo-list__item-image" src={photo.imageSource} alt="Photo" /> 
@@ -23,7 +15,6 @@ function PhotoListItem({ photo }) {
         <p className="photo-list__user-location">{photo.location.city}, {photo.location.country}</p>
         </div>
       </div>
-    </div>
     </div>
   );
 }
