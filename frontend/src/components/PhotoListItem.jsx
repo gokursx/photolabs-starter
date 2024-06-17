@@ -2,11 +2,11 @@ import React from "react";
 
 import "../styles/PhotoListItem.scss";
 
-function PhotoListItem({ data }) {
+function PhotoListItem({ photo }) {
   return (
     <div>
-      <h2>{data.title}</h2>
-      <img src={data.thumbnailUrl} alt={data.title} />
+      <h2>{photo.title}</h2>
+      <img src={photo.imageSource} alt={photo.title} />
     </div>
   );
 };
