@@ -7,6 +7,7 @@ function PhotoListItem({ photo }) {
     <div>
       <h2>{photo.title}</h2>
       <img src={photo.imageSource} alt={photo.title} />
+      
     </div>
   );
 };
