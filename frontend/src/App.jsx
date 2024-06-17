@@ -1,25 +1,45 @@
-// frontend/src/App.jsx
-import React from 'react';
+// // frontend/src/App.jsx
+// import React from 'react';
 
- // import PhotoListItem from './components/PhotoListItem';
- import PhotoList from './components/PhotoList';
- import './App.scss';
+//  // import PhotoListItem from './components/PhotoListItem';
+//  import PhotoList from './components/PhotoList';
+//  import './App.scss';
+
+// const sampleDataForPhotoListItem = {
+//   id: "1",
+//   location: {
+//     city: "Montreal",
+//     country: "Canada",
+//   },
+//   imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+//   username: "Joe Example",
+//   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+// };
+
+//  const App = () => (
+//    <div className="App">
+//      {/* The rest of your React code */}
+//    </div>
+//  )
+
+// export default App;
+
+import React from 'react';
+import PhotoListItem from 'components/PhotoListItem';
 
 const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+  id: 1,
+  title: "Sample Photo",
+  url: "https://example.com/photo.jpg",
+  thumbnailUrl: "https://example.com/photo-thumbnail.jpg",
 };
 
- const App = () => (
-   <div className="App">
-     {/* The rest of your React code */}
-   </div>
- )
+function App() {
+  return (
+    <div className="App">
+      <PhotoListItem data={sampleDataForPhotoListItem} />
+    </div>
+  );
+}
 
 export default App;
