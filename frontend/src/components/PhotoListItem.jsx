@@ -1,20 +1,20 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 
 function PhotoListItem({ photo }) {
   return (
     <div className="photo-list__item">
-      <div>
-      <h2>{photo.title}</h2>
-      <img src={photo.imageSource} alt={photo.title} /> 
+      <div className="photo-list__item-content">
+        <img className="photo-list__item-image" src={photo.imageSource} alt="Photo" /> 
+      </div>
+      <div className="photo-list__user_details">
+        <img className="photo-list__user-image" src={photo.profile} alt={photo.username} /> 
+        <h3 className="photo-list__user-name">{photo.username}</h3>
+        {/* Displaying location */}
+        <p className="photo-list__user-location">{photo.location.city}, {photo.location.country}</p>
+      </div>
     </div>
-    </div>
-
-    
-    
   );
-};
+}
 
 export default PhotoListItem;
-
