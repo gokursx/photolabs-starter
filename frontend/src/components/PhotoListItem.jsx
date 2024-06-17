@@ -6,7 +6,6 @@ function PhotoListItem({ photo }) {
     <div className="photo-list__item">
       <div className="photo-list__item-content">
         <img className="photo-list__item-image" src={photo.imageSource} alt="Photo" /> 
-        <PhotoFavButton />
       </div>
       <div className="photo-list__user-details">
         <img className="photo-list__user-image" src={photo.profile} alt={photo.username} /> 
