@@ -6,14 +6,14 @@
 //  import './App.scss';
 
 // const sampleDataForPhotoListItem = {
-//   id: "1",
-//   location: {
-//     city: "Montreal",
-//     country: "Canada",
-//   },
-//   imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-//   username: "Joe Example",
-//   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+  // id: "1",
+  // location: {
+  //   city: "Montreal",
+  //   country: "Canada",
+  // },
+  // imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+  // username: "Joe Example",
+  // profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 // };
 
 //  const App = () => (
@@ -28,10 +28,14 @@ import React from 'react';
 import PhotoListItem from 'components/PhotoListItem';
 
 const sampleDataForPhotoListItem = {
-  id: 1,
-  title: "Sample Photo",
-  url: "https://example.com/photo.jpg",
-  thumbnailUrl: "https://example.com/photo-thumbnail.jpg",
+  id: "1",
+  location: {
+    city: "Montreal",
+    country: "Canada",
+  },
+  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+  username: "Joe Example",
+  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
 function App() {
