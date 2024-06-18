@@ -1,8 +1,6 @@
-frontend/src/components/PhotoList.jsx
-
 import React from 'react';
-
 import '../styles/PhotoList.scss';
+import PhotoListItem from './PhotoListItem';
 
 const sampleDataForPhotoList = [
   {
@@ -58,12 +56,22 @@ const sampleDataForPhotoList = [
   },
 ];
 
-
-
 const PhotoList = () => {
-  <ul className="photo-list">
-    {/* Insert React */}
-  </ul>
-}
+  return (
+    <ul className="photo-list">
+      {sampleDataForPhotoList.map(photo => (
+        <PhotoListItem 
+          key={photo.id} 
+          photo={{
+            imageSource: photo.urls.regular,
+            profile: photo.user.profile,
+            username: photo.user.username,
+            location: photo.location
+          }}
+        />
+      ))}
+    </ul>
+  );
+};
 
-export default PhotoList
+export default PhotoList;
