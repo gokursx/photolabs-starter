@@ -1,6 +1,8 @@
-import React from "react";
+frontend/src/components/PhotoList.jsx
 
-import "../styles/PhotoList.scss";
+import React from 'react';
+
+import '../styles/PhotoList.scss';
 
 const sampleDataForPhotoList = [
   {
@@ -56,12 +58,12 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
-  return (
-    <ul className="photo-list">
-      {/* Insert React */}
-    </ul>
-  );
-};
 
-export default PhotoList;
+
+const PhotoList = () => {
+  <ul className="photo-list">
+    {/* Insert React */}
+  </ul>
+}
+
+export default PhotoList
