@@ -20,10 +20,24 @@ const sampleDataForTopicList = [
   },
 ];
 
-const TopicList = () => {
+// const TopicList = () => {
+//   return (
+//     <div className="top-nav-bar__topic-list">
+      
+//     </div>
+//   );
+// };
+
+const TopicList = ({ topics, getPhotosByTopic }) => {
+  const topicList = topics.map(topic => {
+    return (
+      <TopicListItem topic={topic} key={topic.id} getPhotosByTopic={getPhotosByTopic} />
+    );
+  });
+
   return (
-    <div className="top-nav-bar__topic-list">
-      {/* Insert React */}
+    <div className="top-nav-bar__topic-list" >
+      {topicList}
     </div>
   );
 };
