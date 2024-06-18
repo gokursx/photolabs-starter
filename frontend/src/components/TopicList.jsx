@@ -20,24 +20,16 @@ const sampleDataForTopicList = [
   },
 ];
 
-// const TopicList = () => {
-//   return (
-//     <div className="top-nav-bar__topic-list">
-      
-//     </div>
-//   );
-// };
-
-const TopicList = ({ topics, getPhotosByTopic }) => {
-  const topicList = topics.map(topic => {
-    return (
-      <TopicListItem topic={topic} key={topic.id} getPhotosByTopic={getPhotosByTopic} />
-    );
-  });
-
+const TopicList = () => {
   return (
-    <div className="top-nav-bar__topic-list" >
-      {topicList}
+    <div className="top-nav-bar__topic-list">
+      <ul>
+        {sampleDataForTopicList.map((topic) => (
+          <li key={topic.id}>
+            <a href={`/topics/${topic.slug}`}>{topic.title}</a>
+          </li>
+        ))}
+      </ul>  
     </div>
   );
 };
