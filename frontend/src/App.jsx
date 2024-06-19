@@ -1,5 +1,5 @@
 // frontend/src/App.jsx
-import React from "react"
+import React from 'react';
 
 // Import PhotoList component
 import PhotoList from './components/PhotoList';
@@ -7,6 +7,9 @@ import PhotoList from './components/PhotoList';
 import TopicList from 'components/TopicList';
 
 // Import App styles
+import './App.scss';
+
+import TopNavigationBar from './components/TopNavigationBar';
 import './App.scss';
 
 const App = () => {
@@ -17,6 +20,7 @@ const App = () => {
       <PhotoList />
       {/* Render TopicList component */}
       <TopicList />
+      <TopNavigationBar />
     </div>
   )
 }
