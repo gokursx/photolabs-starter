@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={mockPhotoData} topics={mockTopicData}/>
-      <PhotoList photos={mockPhotoData} />
+      
     </div>
   )
 }
