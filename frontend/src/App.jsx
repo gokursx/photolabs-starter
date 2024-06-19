@@ -14,11 +14,7 @@ import HomeRoute from 'routes/HomeRoute';
 const App = () => {
   return (
     <div className="App">
-      {/* Render TopNavigationBar component */}
-      <TopNavigationBar />
-      {/* Render PhotoList component */}
-      <PhotoList />
-      <HomeRoute />
+      
     </div>
   )
 }
