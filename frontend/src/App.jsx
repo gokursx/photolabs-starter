@@ -11,10 +11,15 @@ import TopNavigationBar from './components/TopNavigationBar';
 
 import HomeRoute from 'routes/HomeRoute';
 
+import mockPhotoData from 'mocks/photos';
+import mockTopicData from 'mocks/topics'
+console.log("mockphotodata",mockPhotoData);
+console.log("mocktopicdata",mockTopicData);
 const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={mockPhotoData} topics={mockTopicData}/>
+      <PhotoList photos={mockPhotoData} />
     </div>
   )
 }
