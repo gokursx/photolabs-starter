@@ -13,7 +13,7 @@ const TopNavigationBar = () => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       {/* Render TopicList component within the Top Navigation Bar */}
-      <TopicList />
+      <TopicList topics={props.topics} />
       {/* Render FavBadge component within the Top Navigation Bar */}
       <FavBadge />
     </div>
