@@ -1,23 +1,19 @@
 import React from 'react';
-import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
-const PhotoList = (props) => {
+function PhotoList({ photos, toggleFav, favs }) {
   return (
-    <ul className="photo-list">
-      {props.photos.map(photo => (
-        <PhotoListItem 
-          key={photo.id} 
-          photo={{
-            imageSource: photo.urls.regular,
-            profile: photo.user.profile,
-            username: photo.user.username,
-            location: photo.location
-          }}
+    <div className="photo-list">
+      {photos.map((photo) => (
+        <PhotoListItem
+          key={photo.id}
+          photo={photo}
+          toggleFav={toggleFav}
+          isFavourite={favs.includes(photo.id)}
         />
       ))}
-    </ul>
+    </div>
   );
-};
+}
 
 export default PhotoList;
