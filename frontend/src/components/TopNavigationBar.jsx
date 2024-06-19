@@ -15,7 +15,7 @@ const TopNavigationBar = (props) => {
       {/* Render TopicList component within the Top Navigation Bar */}
       <TopicList topics={props.topics} />
       {/* Render FavBadge component within the Top Navigation Bar */}
-      <FavBadge />
+      <FavBadge isFavPhotoExist={props.isFavPhotoExist}/>
     </div>
   )
 }
