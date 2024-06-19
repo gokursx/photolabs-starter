@@ -7,7 +7,13 @@ function PhotoList({ photos, toggleFav, favs }) {
       {photos.map((photo) => (
         <PhotoListItem
           key={photo.id}
-          photo={photo}
+          photo={{
+            id: photo.id,
+            imageSource: photo.urls.regular,
+            profile: photo.user.profile,
+            username: photo.user.username,
+            location: photo.location
+          }}
           toggleFav={toggleFav}
           isFavourite={favs.includes(photo.id)}
         />
