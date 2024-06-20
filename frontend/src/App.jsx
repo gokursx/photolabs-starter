@@ -21,7 +21,7 @@ const App = () => {
       <HomeRoute photos={mockPhotoData} topics={mockTopicData} setIsModalVisible={setIsModalVisible} />
       
       {/* Render modal based on isModalVisible state */}
-      {isModalVisible && <PhotoDetailsModal />}
+      {isModalVisible && <PhotoDetailsModal closeDisplayModal={setIsModalVisible} />}
     </div>
   );
 };
