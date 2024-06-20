@@ -3,7 +3,7 @@ import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = ({ photo, toggleFav, isFavourite, setIsModalVisible, setSelectedPhoto }) => {
   const { id, imageSource, profile, username, location } = photo;
-
+  
   const handlePhotoClick = () => {
     setSelectedPhoto(photo);  // Update the state with the clicked photo's details
     setIsModalVisible(true);  // Set modal visibility to true when photo is clicked
@@ -14,7 +14,7 @@ const PhotoListItem = ({ photo, toggleFav, isFavourite, setIsModalVisible, setSe
       <img src={imageSource} alt={username} />
       <div className="photo-info">
         <h3>{username}</h3>
-        <p>{location.city}, {location.country}</p> {/* Ensure location is rendered correctly */}
+        <p>{location.city}, {location.country}</p> 
         <button
           onClick={(e) => {
             e.stopPropagation(); // Prevent click event from bubbling up

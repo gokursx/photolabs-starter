@@ -12,7 +12,7 @@ import mockTopicData from 'mocks/topics';
 const App = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null); // New state for selected photo details
-
+  
   console.log("mockPhotoData", mockPhotoData);
   console.log("mockTopicData", mockTopicData);
 
@@ -24,7 +24,7 @@ const App = () => {
         setIsModalVisible={setIsModalVisible} 
         setSelectedPhoto={setSelectedPhoto} // Pass the new state setter
       />
-      {isModalVisible && 
+      {isModalVisible &&
         <PhotoDetailsModal 
           closeDisplayModal={setIsModalVisible} 
           photoDetails={selectedPhoto} // Pass the selected photo details
