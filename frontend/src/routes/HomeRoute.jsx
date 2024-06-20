@@ -17,7 +17,12 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={props.topics} isFavPhotoExist={favs.length > 0}/>
-      <PhotoList photos={props.photos} toggleFav={toggleFav} favs={favs} />
+      <PhotoList 
+        photos={props.photos} 
+        toggleFav={toggleFav} 
+        favs={favs} 
+        setIsModalVisible={props.setIsModalVisible} // Pass the function to PhotoList
+      />
     </div>
   );
 };

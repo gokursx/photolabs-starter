@@ -1,27 +1,33 @@
 // frontend/src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 
 // Import PhotoList component
 import PhotoList from './components/PhotoList';
 
 // Import App styles
 import './App.scss';
-
 import TopNavigationBar from './components/TopNavigationBar';
-
 import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 import mockPhotoData from 'mocks/photos';
-import mockTopicData from 'mocks/topics'
-console.log("mockphotodata",mockPhotoData);
-console.log("mocktopicdata",mockTopicData);
+import mockTopicData from 'mocks/topics';
+
 const App = () => {
+  // State variable to control the visibility of the modal
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  console.log("mockphotodata", mockPhotoData);
+  console.log("mocktopicdata", mockTopicData);
+
   return (
     <div className="App">
-      <HomeRoute photos={mockPhotoData} topics={mockTopicData}/>
+      <HomeRoute photos={mockPhotoData} topics={mockTopicData} setIsModalVisible={setIsModalVisible} />
       
+      {/* Render modal based on isModalVisible state */}
+      {isModalVisible && <PhotoDetailsModal />}
     </div>
-  )
-}
+  );
+};
 
 export default App;
