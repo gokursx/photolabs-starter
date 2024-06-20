@@ -1,8 +1,4 @@
-// frontend/src/App.jsx
 import React, { useState } from 'react';
-
-// Import PhotoList component
-import PhotoList from './components/PhotoList';
 
 // Import App styles
 import './App.scss';
