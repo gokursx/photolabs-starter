@@ -10,18 +10,26 @@ import mockPhotoData from 'mocks/photos';
 import mockTopicData from 'mocks/topics';
 
 const App = () => {
-  // State variable to control the visibility of the modal
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null); // New state for selected photo details
 
-  console.log("mockphotodata", mockPhotoData);
-  console.log("mocktopicdata", mockTopicData);
+  console.log("mockPhotoData", mockPhotoData);
+  console.log("mockTopicData", mockTopicData);
 
   return (
     <div className="App">
-      <HomeRoute photos={mockPhotoData} topics={mockTopicData} setIsModalVisible={setIsModalVisible} />
-      
-      {/* Render modal based on isModalVisible state */}
-      {isModalVisible && <PhotoDetailsModal closeDisplayModal={setIsModalVisible} />}
+      <HomeRoute 
+        photos={mockPhotoData} 
+        topics={mockTopicData} 
+        setIsModalVisible={setIsModalVisible} 
+        setSelectedPhoto={setSelectedPhoto} // Pass the new state setter
+      />
+      {isModalVisible && 
+        <PhotoDetailsModal 
+          closeDisplayModal={setIsModalVisible} 
+          photoDetails={selectedPhoto} // Pass the selected photo details
+        />
+      }
     </div>
   );
 };
