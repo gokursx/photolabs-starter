@@ -38,7 +38,7 @@ const useApplicationData = () => {
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
-  
+
   function reducer(state, action) {
     switch (action.type) {
       case ACTIONS.FAV_PHOTO_ADDED:
@@ -80,6 +80,19 @@ const useApplicationData = () => {
         throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
     }
   }
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+  }, []);
+  
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
+  }, []);
+  
   return {
     state,
     onPhotoSelect,
