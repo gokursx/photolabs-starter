@@ -1,4 +1,5 @@
-import { useReducer } from "react";
+import photos from "mocks/photos";
+import { useEffect, useReducer } from "react";
 
 /* insert app levels actions below */
 export const ACTIONS = {
@@ -13,7 +14,8 @@ const initialState = {
   isModalVisible: false,
   selectedPhoto: null,
   favPhotoIds: [],
-  topics: []
+  topics: [],
+  photos: [],
 };
 
 const useApplicationData = () => {
@@ -59,7 +61,13 @@ const useApplicationData = () => {
       case ACTIONS.SET_TOPIC_DATA:
         return {
           ...state,
-          topics: action.payload.topics
+          topics: action.payload
+        };
+
+      case ACTIONS.SET_PHOTO_DATA:
+        return {
+          ...state,
+          photos: action.payload
         };
 
       case ACTIONS.SELECT_PHOTO:
@@ -84,15 +92,17 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      });
   }, []);
-  
+
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
-  
+
   return {
     state,
     onPhotoSelect,

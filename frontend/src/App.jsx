@@ -19,14 +19,11 @@ const App = () => {
     // Destructure any other needed functions here
   } = useApplicationData();
 
-  console.log("mockPhotoData", mockPhotoData);
-  console.log("mockTopicData", mockTopicData);
-
   return (
     <div className="App">
       <HomeRoute 
-        photos={mockPhotoData} 
-        topics={mockTopicData} 
+        photos={state.photos} 
+        topics={state.topics} 
         setIsModalVisible={(isVisible) => {
           if (!isVisible) onClosePhotoDetailsModal();
         }} 
