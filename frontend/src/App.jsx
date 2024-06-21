@@ -15,6 +15,7 @@ const App = () => {
     state,
     onPhotoSelect,
     onClosePhotoDetailsModal,
+    updateToFavPhotoIds, // Ensure this is destructured if needed in the component
     // Destructure any other needed functions here
   } = useApplicationData();
 

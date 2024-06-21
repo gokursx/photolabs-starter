@@ -19,10 +19,15 @@ const useApplicationData = () => {
 
   // Function to update favorite photo IDs
   const updateToFavPhotoIds = (id) => {
-    setState((prev) => ({
-      ...prev,
-      favPhotoIds: [...prev.favPhotoIds, id]
-    }));
+    setState((prev) => {
+      if (prev.favPhotoIds.includes(id)) {
+        return prev; // No need to update, the photo ID is already in the favorites
+      }
+      return { 
+        ...prev,
+        favPhotoIds: [...prev.favPhotoIds, id]
+      };
+    });
   };
 
   // Function to load topics
