@@ -100,7 +100,8 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch(error => console.log("error",error))
   }, []);
 
   return {
