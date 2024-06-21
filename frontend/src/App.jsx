@@ -16,6 +16,20 @@ const App = () => {
   console.log("mockPhotoData", mockPhotoData);
   console.log("mockTopicData", mockTopicData);
 
+  const App = () => {
+    const {
+      state,
+      onPhotoSelect,
+      updateToFavPhotoIds,
+      onLoadTopic,
+      onClosePhotoDetailsModal,
+    } = useApplicationData();
+  
+    return (
+      // React components
+    );
+  }
+
   return (
     <div className="App">
       <HomeRoute 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PhotoList from './PhotoList'; // Import the PhotoList component
+import PhotoList from '../components/PhotoList'; // Import the PhotoList component
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
