@@ -8,27 +8,17 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 import mockPhotoData from 'mocks/photos';
 import mockTopicData from 'mocks/topics';
-
+import useApplicationData from './hooks/useApplicationData';
 const App = () => {
+  const {
+    state,
+    // Destructure your state update functions here
+  } = useApplicationData();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null); // New state for selected photo details
   
   console.log("mockPhotoData", mockPhotoData);
   console.log("mockTopicData", mockTopicData);
-
-  const App = () => {
-    const {
-      state,
-      onPhotoSelect,
-      updateToFavPhotoIds,
-      onLoadTopic,
-      onClosePhotoDetailsModal,
-    } = useApplicationData();
-  
-    return (
-      // React components
-    );
-  }
 
   return (
     <div className="App">
