@@ -27,7 +27,11 @@ const useApplicationData = () => {
 
   // Function to update favorite photo IDs
   const updateToFavPhotoIds = (id) => {
-    dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id } });
+    if (state.favPhotoIds.includes(id)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id } });
+    } else {
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id } });
+    }
   };
 
   // Function to load topics
