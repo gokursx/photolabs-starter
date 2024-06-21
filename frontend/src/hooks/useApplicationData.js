@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 
 /* insert app levels actions below */
 export const ACTIONS = {
@@ -10,65 +10,84 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
 }
 
-function reducer(state, action) {
-  switch (action.type) {
-    case FAV_PHOTO_ADDED:
-      return { /* insert logic */ }
-    { /* insert all relevant actions as case statements*/ }  
-    }
-    default:
-      throw new Error(
-        `Tried to reduce with unsupported action type: ${action.type}`
-      );
-  }
-}
+const initialState = {
+  isModalVisible: false,
+  selectedPhoto: null,
+  favPhotoIds: [],
+  topics: []
+};
 
 const useApplicationData = () => {
-  const [state, setState] = useState({
-    isModalVisible: false,
-    selectedPhoto: null,
-    favPhotoIds: [],
-    topics: []
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // Function to handle photo selection
   const onPhotoSelect = (photo) => {
-    setState((prev) => ({
-      ...prev,
-      selectedPhoto: photo,
-      isModalVisible: true
-    }));
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
   };
 
   // Function to update favorite photo IDs
   const updateToFavPhotoIds = (id) => {
-    setState((prev) => {
-      if (prev.favPhotoIds.includes(id)) {
-        return prev; // No need to update, the photo ID is already in the favorites
-      }
-      return { 
-        ...prev,
-        favPhotoIds: [...prev.favPhotoIds, id]
-      };
-    });
+    dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id } });
   };
 
   // Function to load topics
   const onLoadTopic = (topics) => {
-    setState((prev) => ({
-      ...prev,
-      topics
-    }));
+    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics } });
   };
 
   // Function to close the photo details modal
   const onClosePhotoDetailsModal = () => {
-    setState((prev) => ({
-      ...prev,
-      isModalVisible: false,
-      selectedPhoto: null
-    }));
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case ACTIONS.FAV_PHOTO_ADDED:
+        if (state.favPhotoIds.includes(action.payload.id)) {
+          return state; // No need to update, the photo ID is already in the favorites
+        }
+        return { 
+          ...state,
+          favPhotoIds: [...state.favPhotoIds, action.payload.id]
+        };
+        
+      case ACTIONS.FAV_PHOTO_REMOVED:
+        return {
+          ...state,
+          favPhotoIds: state.favPhotoIds.filter(id => id !== action.payload.id)
+        };
+  
+      case ACTIONS.SET_PHOTO_DATA:
+        return {
+          ...state,
+          selectedPhoto: action.payload.photo,
+          isModalVisible: true
+        };
+  
+      case ACTIONS.SET_TOPIC_DATA:
+        return {
+          ...state,
+          topics: action.payload.topics
+        };
+  
+      case ACTIONS.SELECT_PHOTO:
+        return {
+          ...state,
+          selectedPhoto: action.payload.photo,
+          isModalVisible: true
+        };
+  
+      case ACTIONS.DISPLAY_PHOTO_DETAILS:
+        return {
+          ...state,
+          isModalVisible: false,
+          selectedPhoto: null
+        };
+  
+      default:
+        throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
+    }
+  }
 
   return {
     state,
