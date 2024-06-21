@@ -22,3 +22,27 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+
+## Dependencies
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/user-event
+- react
+- react-dom
+- react-scripts
+- web-vitals
+
+## Work flow
+
+## Functionality
+- The client-side consists of the development of a React single page application (SPA) called - PhotoLabs
+- The server and persistence layer given as follows:
+- The data layer consists of PostgreSQL database
+- The API server consists of a Node Express.js server application
+- The server/persistence layer may require modifications for stretch goals
+- The client will communicate with the API over HTTP using the JSON format
+
+## Final Product
+!["Screenshot of photo topics"](https://github.com/gokursx/photolabs-starter/blob/main/docs/photo-topics.png)
+!["Screenshot of favourite photo"](https://github.com/gokursx/photolabs-starter/blob/main/docs/favourite-photo.png)
+
