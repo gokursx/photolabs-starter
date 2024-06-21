@@ -2,14 +2,52 @@ import { useState } from "react";
 
 const useApplicationData = () => {
   const [state, setState] = useState({
-    // Define your initial state here
+    isModalVisible: false,
+    selectedPhoto: null,
+    favPhotoIds: [],
+    topics: []
   });
 
-  // Define your state update functions here
+  // Function to handle photo selection
+  const onPhotoSelect = (photo) => {
+    setState((prev) => ({
+      ...prev,
+      selectedPhoto: photo,
+      isModalVisible: true
+    }));
+  };
+
+  // Function to update favorite photo IDs
+  const updateToFavPhotoIds = (id) => {
+    setState((prev) => ({
+      ...prev,
+      favPhotoIds: [...prev.favPhotoIds, id]
+    }));
+  };
+
+  // Function to load topics
+  const onLoadTopic = (topics) => {
+    setState((prev) => ({
+      ...prev,
+      topics
+    }));
+  };
+
+  // Function to close the photo details modal
+  const onClosePhotoDetailsModal = () => {
+    setState((prev) => ({
+      ...prev,
+      isModalVisible: false,
+      selectedPhoto: null
+    }));
+  };
 
   return {
     state,
-    // Return your state update functions here
+    onPhotoSelect,
+    updateToFavPhotoIds,
+    onLoadTopic,
+    onClosePhotoDetailsModal
   };
 };
 

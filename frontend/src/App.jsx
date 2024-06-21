@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Import App styles
 import './App.scss';
@@ -9,14 +9,15 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import mockPhotoData from 'mocks/photos';
 import mockTopicData from 'mocks/topics';
 import useApplicationData from './hooks/useApplicationData';
+
 const App = () => {
   const {
     state,
-    // Destructure your state update functions here
+    onPhotoSelect,
+    onClosePhotoDetailsModal,
+    // Destructure any other needed functions here
   } = useApplicationData();
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null); // New state for selected photo details
-  
+
   console.log("mockPhotoData", mockPhotoData);
   console.log("mockTopicData", mockTopicData);
 
@@ -25,13 +26,15 @@ const App = () => {
       <HomeRoute 
         photos={mockPhotoData} 
         topics={mockTopicData} 
-        setIsModalVisible={setIsModalVisible} 
-        setSelectedPhoto={setSelectedPhoto} // Pass the new state setter
+        setIsModalVisible={(isVisible) => {
+          if (!isVisible) onClosePhotoDetailsModal();
+        }} 
+        setSelectedPhoto={onPhotoSelect} // Use the new state update function
       />
-      {isModalVisible &&
+      {state.isModalVisible &&
         <PhotoDetailsModal 
-          closeDisplayModal={setIsModalVisible} 
-          photoDetails={selectedPhoto} // Pass the selected photo details
+          closeDisplayModal={() => onClosePhotoDetailsModal()} 
+          photoDetails={state.selectedPhoto} // Use the updated state
         />
       }
     </div>
