@@ -1,116 +1,104 @@
-import photos from "mocks/photos";
-import { useEffect, useReducer } from "react";
+import { useReducer, useEffect } from 'react';
 
-/* insert app levels actions below */
-export const ACTIONS = {
-  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
-  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SELECT_PHOTO: 'SELECT_PHOTO',
-  CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS'
+const ACTIONS = {
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
+  CLOSE_PHOTO_DETAILS: "CLOSE_PHOTO_DETAILS",
+  // Add other actions as required
 };
 
 const initialState = {
-  isModalVisible: false,
-  selectedPhoto: null,
-  favPhotoIds: [],
-  topics: [],
   photos: [],
+  topics: [],
+  selectedPhoto: null,
+  isModalVisible: false,
+  favouritePhotos: [],
+  // Add any other initial states as required
 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.SET_PHOTO_DATA:
+      return {
+        ...state,
+        photos: action.payload,
+      };
+    case ACTIONS.SET_TOPIC_DATA:
+      return {
+        ...state,
+        topics: action.payload,
+      };
+    case ACTIONS.SET_SELECTED_PHOTO:
+      return {
+        ...state,
+        selectedPhoto: action.payload.photo,
+        isModalVisible: true,
+      };
+    case ACTIONS.CLOSE_PHOTO_DETAILS:
+      return {
+        ...state,
+        isModalVisible: false,
+        selectedPhoto: null,
+      };
+    case ACTIONS.UPDATE_FAV_PHOTO_IDS:
+      return {
+        ...state,
+        favouritePhotos: action.payload,
+      };
+    // Add other cases based on your requirements
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+}
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Function to handle photo selection
-  const onPhotoSelect = (photo) => {
-    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
-  };
-
-  // Function to update favorite photo IDs
-  const updateToFavPhotoIds = (id) => {
-    dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id } });
-  };
-
-  // Function to load topics
-  const onLoadTopic = (topics) => {
-    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics } });
-  };
-
-  // Function to close the photo details modal
-  const onClosePhotoDetailsModal = () => {
-    dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
-  };
-
-  function reducer(state, action) {
-    switch (action.type) {
-      case ACTIONS.FAV_PHOTO_ADDED:
-        if (state.favPhotoIds.includes(action.payload.id)) {
-          return state; // No need to update, the photo ID is already in the favorites
-        }
-        return {
-          ...state,
-          favPhotoIds: [...state.favPhotoIds, action.payload.id]
-        };
-
-      case ACTIONS.FAV_PHOTO_REMOVED:
-        return {
-          ...state,
-          favPhotoIds: state.favPhotoIds.filter(id => id !== action.payload.id)
-        };
-
-      case ACTIONS.SET_TOPIC_DATA:
-        return {
-          ...state,
-          topics: action.payload
-        };
-
-      case ACTIONS.SET_PHOTO_DATA:
-        return {
-          ...state,
-          photos: action.payload
-        };
-
-      case ACTIONS.SELECT_PHOTO:
-        return {
-          ...state,
-          selectedPhoto: action.payload.photo,
-          isModalVisible: true
-        };
-
-      case ACTIONS.CLOSE_PHOTO_DETAILS:
-        return {
-          ...state,
-          isModalVisible: false,
-          selectedPhoto: null
-        };
-
-      default:
-        throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
-    }
-  }
-
   useEffect(() => {
     fetch("/api/photos")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
-      });
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
   }, []);
 
   useEffect(() => {
     fetch("/api/topics")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
-      .catch(error => console.log("error",error))
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch(error => console.error("Error fetching topics data: ", error));
   }, []);
+
+  const onPhotoSelect = (photo) => {
+    dispatch({ type: ACTIONS.SET_SELECTED_PHOTO, payload: { photo } });
+  };
+
+  const onClosePhotoDetailsModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
+  };
+
+  const updateToFavPhotoIds = (photoId) => {
+    const isFavourite = state.favouritePhotos.includes(photoId);
+    const updatedFavourites = isFavourite
+      ? state.favouritePhotos.filter(id => id !== photoId)
+      : [...state.favouritePhotos, photoId];
+
+    dispatch({ type: ACTIONS.UPDATE_FAV_PHOTO_IDS, payload: updatedFavourites });
+  };
+
+  const onLoadTopic = (topicId) => {
+    const filteredPhotos = state.photos.filter((photo) => photo.topicId === topicId);
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: filteredPhotos });
+    // Add any other topic loading logic here, if necessary
+  };
 
   return {
     state,
     onPhotoSelect,
     updateToFavPhotoIds,
     onLoadTopic,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
   };
 };
 
 export default useApplicationData;
+

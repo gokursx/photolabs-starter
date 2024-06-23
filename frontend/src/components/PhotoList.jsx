@@ -1,7 +1,7 @@
 import React from 'react';
 import PhotoListItem from './PhotoListItem';
 
-function PhotoList({ photos, toggleFav, favs, setIsModalVisible }) {
+function PhotoList({ photos, toggleFav, favs, setSelectedPhoto, setIsModalVisible }) {
   return (
     <div className="photo-list">
       {photos.map((photo) => (
@@ -16,6 +16,7 @@ function PhotoList({ photos, toggleFav, favs, setIsModalVisible }) {
           }}
           toggleFav={toggleFav}
           isFavourite={favs.includes(photo.id)}
+          setSelectedPhoto={setSelectedPhoto} // Pass setSelectedPhoto to PhotoListItem
           setIsModalVisible={setIsModalVisible}  // Pass setIsModalVisible to PhotoListItem
         />
       ))}

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/HomeRoute.scss';
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
@@ -22,6 +21,7 @@ const HomeRoute = (props) => {
         toggleFav={toggleFav} 
         favs={favs} 
         setIsModalVisible={props.setIsModalVisible}  // Pass setIsModalVisible to PhotoList
+        setSelectedPhoto={props.setSelectedPhoto}  // Pass setSelectedPhoto to PhotoList
       />
     </div>
   );
