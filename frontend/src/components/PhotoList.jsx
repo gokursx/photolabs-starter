@@ -17,11 +17,11 @@ function PhotoList({ photos, toggleFav, favs, setSelectedPhoto, setIsModalVisibl
           toggleFav={toggleFav}
           isFavourite={favs.includes(photo.id)}
           setSelectedPhoto={setSelectedPhoto} // Pass setSelectedPhoto to PhotoListItem
-          setIsModalVisible={setIsModalVisible}  // Pass setIsModalVisible to PhotoListItem
+          setIsModalVisible={setIsModalVisible} // Pass setIsModalVisible to PhotoListItem
         />
       ))}
     </div>
   );
-}
+};
 
 export default PhotoList;
