@@ -20,7 +20,7 @@ const App = () => {
     <div className="App">
       <TopNavigationBar 
         topics={state.topics} 
-        onSelectTopic={onLoadTopic}
+        onSelectTopic={onLoadTopic} 
         isFavPhotoExist={isFavPhotoExist} 
       />
       <HomeRoute 

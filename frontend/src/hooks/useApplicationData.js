@@ -88,7 +88,6 @@ const useApplicationData = () => {
   const onLoadTopic = (topicId) => {
     const filteredPhotos = state.photos.filter((photo) => photo.topicId === topicId);
     dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: filteredPhotos });
-    // Add any other topic loading logic here, if necessary
   };
 
   return {

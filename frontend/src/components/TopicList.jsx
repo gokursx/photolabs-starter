@@ -8,23 +8,25 @@ const TopicList = ({ topics, onTopicClick }) => {
     return <p>No topics available</p>;
   }
 
+
   return (
     <div className="top-nav-bar__topic-list">
       <ul>
         {topics.map((topic) => (
           <TopicListItem 
-            key={topic.id} 
+            key={topic.id}
             topic={topic} 
-            onTopicClick={onTopicClick} />
+            onTopicClick={onTopicClick} 
+          />
         ))}
-      </ul>  
+      </ul>
     </div>
   );
 };
 
 TopicList.propTypes = {
   topics: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired
   })).isRequired,
   onTopicClick: PropTypes.func.isRequired
