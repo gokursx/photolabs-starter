@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
+import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({ closeDisplayModal, photoDetails }) => {
   const modalRef = useRef(null);
@@ -37,15 +38,16 @@ const PhotoDetailsModal = ({ closeDisplayModal, photoDetails }) => {
           </div>
         )}
 
-        {/* Similar photos section */}
         {photoDetails && photoDetails.similarPhotos && (
           <div className="photo-details-modal__similar-photos">
             <h4>Similar Photos</h4>
-            {/* similar photos rendering logic */}
+            <PhotoList photos={photoDetails.similarPhotos} />
           </div>
         )}
+
       </div>
     </div>
+
   );
 };
 

@@ -8,15 +8,14 @@ const TopicList = ({ topics, onTopicClick }) => {
     return <p>No topics available</p>;
   }
 
-
   return (
     <div className="top-nav-bar__topic-list">
       <ul>
         {topics.map((topic) => (
           <TopicListItem 
             key={topic.id}
-            topic={topic} 
-            onTopicClick={onTopicClick} 
+            topic={topic}
+            onTopicClick={onTopicClick} // Ensure it's being passed here
           />
         ))}
       </ul>

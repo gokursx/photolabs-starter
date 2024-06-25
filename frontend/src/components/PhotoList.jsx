@@ -2,6 +2,7 @@ import React from 'react';
 import PhotoListItem from './PhotoListItem';
 
 function PhotoList({ photos, toggleFav, favs, setSelectedPhoto, setIsModalVisible }) {
+  console.log('Rendering PhotoList with photos:', photos); // Debug log
   return (
     <div className="photo-list">
       {photos.map((photo) => (
