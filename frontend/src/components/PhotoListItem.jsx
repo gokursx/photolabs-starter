@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/PhotoListItem.scss';
 import FavIcon from './FavIcon';
+import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = ({ photo, toggleFav, isFavourite, setIsModalVisible, setSelectedPhoto }) => {
   const { id, imageSource, username, location } = photo;
@@ -20,21 +21,12 @@ const PhotoListItem = ({ photo, toggleFav, isFavourite, setIsModalVisible, setSe
   };
 
   return (
-    <div className="photo-list-item" onClick={handlePhotoClick}>
-      <img src={imageSource} alt={username} />
+    <div className="photo-list__item"> 
+      <PhotoFavButton photoId = {photo.id} toggleFav = {toggleFav} isFavourite={isFavourite}></PhotoFavButton>
+      <img className="photo-list__image" src={imageSource} alt={username} onClick={handlePhotoClick}/>
       <div className="photo-info">
         <h3>{username}</h3>
         <p>{location.city}, {location.country}</p>
-        
-        <button
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent click event from bubbling up
-            toggleFav(id);
-          }}
-        >
-          <FavIcon isFavourite={isFavourite}></FavIcon>
-          
-        </button>
       </div>
     </div>
   );

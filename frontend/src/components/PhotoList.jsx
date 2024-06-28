@@ -1,10 +1,11 @@
 import React from 'react';
 import PhotoListItem from './PhotoListItem';
+import "../styles/PhotoList.scss";
 
 function PhotoList({ photos, toggleFav, favs, setSelectedPhoto, setIsModalVisible }) {
   console.log('Rendering PhotoList with photos:', photos); // Debug log
   return (
-    <div className="photo-list">
+    <ul className="photo-list">
       {photos.map((photo) => (
         <PhotoListItem
           key={photo.id}
@@ -23,7 +24,7 @@ function PhotoList({ photos, toggleFav, favs, setSelectedPhoto, setIsModalVisibl
           setIsModalVisible={setIsModalVisible} // Pass setIsModalVisible to PhotoListItem
         />
       ))}
-    </div>
+    </ul>
   );
 };
 

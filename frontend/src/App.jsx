@@ -17,22 +17,22 @@ const App = () => {
 
   const isFavPhotoExist = state.favouritePhotos.length > 0;
   
-  const [favs, setFavs] = useState([]);
+  // const [favs, setFavs] = useState([]);
 
-  const toggleFav = (photoId) => {
-    setFavs((prevFavs) =>
-      prevFavs.includes(photoId)
-        ? prevFavs.filter((id) => id !== photoId)
-        : [...prevFavs, photoId]
-    );
-  };
+  // const toggleFav = (photoId) => {
+  //   setFavs((prevFavs) =>
+  //     prevFavs.includes(photoId)
+  //       ? prevFavs.filter((id) => id !== photoId)
+  //       : [...prevFavs, photoId]
+  //   );
+  // };
   
 
   return (
     <div className="App">
       <HomeRoute 
-        favs= {favs} 
-        toggleFav = {toggleFav}
+        favs= {state.favouritePhotos} 
+        toggleFav = {updateToFavPhotoIds}
         photos={state.photos} 
         topics={state.topics}
         setIsModalVisible={(isVisible) => {
@@ -45,8 +45,8 @@ const App = () => {
         <PhotoDetailsModal 
           closeDisplayModal={onClosePhotoDetailsModal} 
           photoDetails={state.selectedPhoto}
-          favs = {favs}
-          toggleFav = {toggleFav}
+          favs = {state.favouritePhotos}
+          toggleFav = {updateToFavPhotoIds}
         />
       )}
     </div>

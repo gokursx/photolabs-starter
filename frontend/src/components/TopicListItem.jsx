@@ -6,7 +6,6 @@ const TopicListItem = ({ topic, onTopicClick }) => {
   return (
     <div className="topic-list__item" onClick={() => onTopicClick(topic.id)}>
       <span className="topic-list__item-title" onClick={() => onTopicClick(topic.id)}>{topic.title}</span>
-      <button className="topic-list__item-button">{topic.title}</button>
     </div>
   );
 }

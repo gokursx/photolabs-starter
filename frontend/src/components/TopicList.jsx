@@ -12,7 +12,7 @@ const TopicList = ({ topics, onTopicClick }) => {
 
   return (
     <div className="top-nav-bar__topic-list">
-      <ul>
+      
         {topics.map((topic) => (
           <TopicListItem 
             key={topic.id}
@@ -20,7 +20,7 @@ const TopicList = ({ topics, onTopicClick }) => {
             onTopicClick={onTopicClick}
           />
         ))}
-      </ul>
+      
     </div>
   );
 };
