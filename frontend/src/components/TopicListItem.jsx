@@ -5,8 +5,8 @@ import "../styles/TopicListItem.scss";
 const TopicListItem = ({ topic, onTopicClick }) => {
   return (
     <div className="topic-list__item" onClick={() => onTopicClick(topic.id)}>
-      <span className="topic-list__item-title">{topic.name}</span>
-      <button className="topic-list__item-button">{topic.name}</button>
+      <span className="topic-list__item-title" onClick={() => onTopicClick(topic.id)}>{topic.title}</span>
+      <button className="topic-list__item-button">{topic.title}</button>
     </div>
   );
 }
@@ -14,7 +14,7 @@ const TopicListItem = ({ topic, onTopicClick }) => {
 TopicListItem.propTypes = {
   topic: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   }).isRequired,
   onTopicClick: PropTypes.func.isRequired,
 };

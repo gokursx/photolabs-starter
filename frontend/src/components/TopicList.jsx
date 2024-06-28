@@ -4,6 +4,8 @@ import "../styles/TopicList.scss";
 import TopicListItem from './TopicListItem';
 
 const TopicList = ({ topics, onTopicClick }) => {
+  // console.log('Topics in TopicList:', topics);
+  
   if (!topics.length) {
     return <p>No topics available</p>;
   }
@@ -15,20 +17,20 @@ const TopicList = ({ topics, onTopicClick }) => {
           <TopicListItem 
             key={topic.id}
             topic={topic}
-            onTopicClick={onTopicClick} // Ensure it's being passed here
+            onTopicClick={onTopicClick}
           />
         ))}
       </ul>
     </div>
   );
 };
-
 TopicList.propTypes = {
   topics: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    name: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
   })).isRequired,
   onTopicClick: PropTypes.func.isRequired
 };
+
 
 export default TopicList;

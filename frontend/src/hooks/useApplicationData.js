@@ -5,7 +5,7 @@ const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
   CLOSE_PHOTO_DETAILS: "CLOSE_PHOTO_DETAILS",
-  // Add other actions as required
+  UPDATE_FAV_PHOTO_IDS: "UPDATE_FAV_PHOTO_IDS"
 };
 
 const initialState = {
@@ -14,7 +14,6 @@ const initialState = {
   selectedPhoto: null,
   isModalVisible: false,
   favouritePhotos: [],
-  // Add any other initial states as required
 };
 
 function reducer(state, action) {
@@ -46,7 +45,6 @@ function reducer(state, action) {
         ...state,
         favouritePhotos: action.payload,
       };
-    // Add other cases based on your requirements
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -85,9 +83,17 @@ const useApplicationData = () => {
   };
 
   const onLoadTopic = (topicId) => {
-    const filteredPhotos = state.photos.filter((photo) => photo.topicId === topicId);
-    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: filteredPhotos });
+    fetch(`/api/topics/photos/${topicId}`)
+      .then(res => res.json())
+      .then(topicPhotos => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: topicPhotos });
+      }); 
   };
+
+  // const getPhotos = function() {
+  //   fetch('api/photos')
+  // }
+  
 
   return {
     state,

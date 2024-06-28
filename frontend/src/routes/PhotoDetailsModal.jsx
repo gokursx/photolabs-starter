@@ -3,8 +3,10 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
-const PhotoDetailsModal = ({ closeDisplayModal, photoDetails }) => {
+const PhotoDetailsModal = ({ favs, toggleFav, closeDisplayModal, photoDetails }) => {
   const modalRef = useRef(null);
+
+  console.log('photoDetails', photoDetails);
 
   // Close modal if clicking outside of it
   useEffect(() => {
@@ -38,10 +40,12 @@ const PhotoDetailsModal = ({ closeDisplayModal, photoDetails }) => {
           </div>
         )}
 
-        {photoDetails && photoDetails.similarPhotos && (
-          <div className="photo-details-modal__similar-photos">
+        {photoDetails && photoDetails.similar_photos && (
+          <div className="photo-details-modal__similar_photos">
             <h4>Similar Photos</h4>
-            <PhotoList photos={photoDetails.similarPhotos} />
+            <PhotoList photos={photoDetails.similar_photos}
+            favs= {favs} 
+            toggleFav = {toggleFav}  />
           </div>
         )}
 
