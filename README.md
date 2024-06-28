@@ -45,4 +45,4 @@ npm start
 ## Final Product
 !["Screenshot of photo topics"](https://github.com/gokursx/photolabs-starter/blob/main/docs/photo-topics.png)
 !["Screenshot of favourite photo"](https://github.com/gokursx/photolabs-starter/blob/main/docs/favourite-photo.png)
-
+!["Screenshot of modal"](https://github.com/gokursx/photolabs-starter/blob/main/docs/photo-modal.png)
