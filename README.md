@@ -33,6 +33,10 @@ npm start
 - web-vitals
 
 ## Work flow
+- User can see all photos and can sort photos by clicking on the topics in the nav bar
+- User can like a photo and see that favourite notificarion in the heart icon on top
+- User can click on a photo and see similar photos in a pop up window
+
 
 ## Functionality
 - The client-side consists of the development of a React single page application (SPA) called - PhotoLabs
