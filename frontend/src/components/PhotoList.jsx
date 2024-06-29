@@ -17,7 +17,6 @@ function PhotoList({ photos, toggleFav, favs, setSelectedPhoto, setIsModalVisibl
             location: photo.location,
             similar_photos: photo.similar_photos
           }}
-          // showModal={() => showModal(photo)}
           toggleFav={toggleFav}
           isFavourite={favs.includes(photo.id)}
           setSelectedPhoto={setSelectedPhoto} // Pass setSelectedPhoto to PhotoListItem

@@ -4,7 +4,6 @@ import "../styles/TopicList.scss";
 import TopicListItem from './TopicListItem';
 
 const TopicList = ({ topics, onTopicClick }) => {
-  // console.log('Topics in TopicList:', topics);
   
   if (!topics.length) {
     return <p>No topics available</p>;

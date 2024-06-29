@@ -90,11 +90,6 @@ const useApplicationData = () => {
       }); 
   };
 
-  // const getPhotos = function() {
-  //   fetch('api/photos')
-  // }
-  
-
   return {
     state,
     onPhotoSelect,

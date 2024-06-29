@@ -4,7 +4,6 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
 const TopNavigationBar = (props) => {
-  // console.log("Topics in TopNavigationBar:", props.topics);
   
   return (
     <div className="top-nav-bar">
